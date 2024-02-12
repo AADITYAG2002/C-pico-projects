@@ -9,8 +9,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 pico_sdk_init()
 
-add_subdirectory(Lcd)
-
 add_executable(lcd_screen
     lcd_screen.c
 )
@@ -18,12 +16,10 @@ add_executable(lcd_screen
 target_link_libraries(lcd_screen 
     pico_stdlib
     hardware_i2c
-    Lcd
     )
 
 target_include_directories(lcd_screen PUBLIC 
-                           "${PROJECT_BINARY_DIR}"
-                           "${PROJECT_SOURCE_DIR}/Lcd")
+                           "${PROJECT_BINARY_DIR}")
 
 pico_enable_stdio_usb(lcd_screen 1)
 pico_enable_stdio_uart(lcd_screen 1)
