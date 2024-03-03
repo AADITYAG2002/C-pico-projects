@@ -1,5 +1,5 @@
-// #include "hardware/i2c.h"
-// #include "pico/binary_info.h"
+#include "hardware/i2c.h"
+#include "pico/binary_info.h"
 
 #include "lcd.h"
 
@@ -79,4 +79,16 @@ void lcd_string(const char *s) {
     while (*s) {
         lcd_char(*s++);
     }
+}
+
+void lcd_init() {
+    lcd_send_byte(0x03, LCD_COMMAND);
+    lcd_send_byte(0x03, LCD_COMMAND);
+    lcd_send_byte(0x03, LCD_COMMAND);
+    lcd_send_byte(0x02, LCD_COMMAND);
+
+    lcd_send_byte(LCD_ENTRYMODESET | LCD_ENTRYLEFT, LCD_COMMAND);
+    lcd_send_byte(LCD_FUNCTIONSET | LCD_2LINE, LCD_COMMAND);
+    lcd_send_byte(LCD_DISPLAYCONTROL | LCD_DISPLAYON, LCD_COMMAND);
+    lcd_clear();
 }

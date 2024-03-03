@@ -1,7 +1,7 @@
 #ifndef LCD_H_
 #define LCD_H_
 
-#include "/pico/binary_info.h"
+// #include "/pico/binary_info.h"
 
 extern const int LCD_CLEARDISPLAY ;
 extern const int LCD_RETURNHOME ;
@@ -59,5 +59,7 @@ static void inline lcd_char(char val) {
 }
 
 void lcd_string(const char *s);
+
+void lcd_init();
 
 #endif
